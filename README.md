@@ -1,2 +1,0 @@
-# mashupBuilder
-HCL Mashup builder
