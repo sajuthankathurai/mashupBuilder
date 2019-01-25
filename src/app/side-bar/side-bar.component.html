@@ -1,0 +1,14 @@
+<accordion [expandAll]="true" [showArrows]="true">
+  <accordion-group *ngFor="let key of keys">
+    <accordion-heading>
+      <b>{{key.toUpperCase()}}</b>
+    </accordion-heading>
+    <ul class="grid">
+      <li class="grid_item" *ngFor="let item of data[key]">
+        <div class="tile"><img id="layout1" src="{{item.imageUrl}}" draggable="true" ondragstart="drag(event)" /></div>
+      </li>
+
+    </ul>
+
+  </accordion-group>
+</accordion>
