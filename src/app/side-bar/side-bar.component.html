@@ -1,14 +1,15 @@
-<accordion [expandAll]="true" [showArrows]="true">
-  <accordion-group *ngFor="let key of keys">
-    <accordion-heading>
+<mat-expansion-panel *ngFor="let key of keys" [expanded]="true">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
       <b>{{key.toUpperCase()}}</b>
-    </accordion-heading>
-    <ul class="grid">
-      <li class="grid_item" *ngFor="let item of data[key]">
-        <div class="tile"><img id="layout1" src="{{item.imageUrl}}" draggable="true" ondragstart="drag(event)" /></div>
-      </li>
+    </mat-panel-title>
 
-    </ul>
+  </mat-expansion-panel-header>
 
-  </accordion-group>
-</accordion>
+  <ul class="grid">
+    <li class="grid_item" *ngFor="let item of data[key]">
+      <div class="tile"><img src="{{item.imageUrl}}" /></div>
+    </li>
+
+  </ul>
+</mat-expansion-panel>

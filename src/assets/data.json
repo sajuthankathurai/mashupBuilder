@@ -33,23 +33,5 @@
       "name": "Line Chart",
       "imageUrl": "images/mashup-builder_19.gif"
     }
-  ],
-
-  "test": [{
-    "name": "Bar Chart",
-    "imageUrl": "images/mashup-builder_20.gif"
-  },
-  {
-    "name": "Pie Chart",
-    "imageUrl": "images/mashup-builder_18.gif"
-  },
-  {
-    "name": "Column Chart",
-    "imageUrl": "images/mashup-builder_17.gif"
-  },
-  {
-    "name": "Line Chart",
-    "imageUrl": "images/mashup-builder_19.gif"
-  }
-]
+  ]
 }

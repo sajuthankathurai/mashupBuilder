@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 body {
   margin: 0px;
+  overflow: hidden;
+  height: 100%;
 }
 
 #logo {
@@ -68,7 +71,7 @@ footer {
   border: 1px solid #2f2728;
   display: block;
   float: left;
-  width: 100px;
+  width: 95px;
   height: 100px;
   margin: 10px;
   border-radius: 5px;

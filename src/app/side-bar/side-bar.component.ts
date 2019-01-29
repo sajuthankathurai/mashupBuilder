@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { SidebarService } from './side-bar.service';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+
 
 
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
-  styleUrls: ['./side-bar.component.css'],
-  providers: [SidebarService]
+  styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
 
   public data: any = {};
+  public list: Array<any> = [];
   public keys: Array<any> = [];
   constructor(private _appService: SidebarService) {
 
@@ -22,7 +24,9 @@ export class SideBarComponent implements OnInit {
       for (let i in response) {
         this.keys.push(i);
       }
+
     });
+
 
   }
 
