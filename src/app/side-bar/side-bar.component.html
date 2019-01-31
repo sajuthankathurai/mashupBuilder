@@ -1,15 +1,18 @@
-<mat-expansion-panel *ngFor="let key of keys" [expanded]="true">
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      <b>{{key.toUpperCase()}}</b>
-    </mat-panel-title>
+<!-- <mat-accordion> -->
+  <mat-expansion-panel *ngFor="let key of keys" [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <b>{{key.toUpperCase()}}</b>
+      </mat-panel-title>
 
-  </mat-expansion-panel-header>
+    </mat-expansion-panel-header>
 
-  <ul class="grid">
-    <li class="grid_item" *ngFor="let item of data[key]">
-      <div class="tile"><img src="{{item.imageUrl}}" /></div>
-    </li>
+    <ul class="grid" cdkDropList id="list-1" cdkDropListConnectedTo="list-2" (cdkDropListDropped)="drop($event)">   
+      <li class="grid_item" *ngFor="let item of data[key]" cdkDrag>
+        <div class="tile"><img  src="{{item.imageUrl}}" /></div>
+      </li>
 
-  </ul>
-</mat-expansion-panel>
+    </ul>
+  </mat-expansion-panel>
+
+<!-- </mat-accordion> -->

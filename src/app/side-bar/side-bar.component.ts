@@ -24,10 +24,22 @@ export class SideBarComponent implements OnInit {
       for (let i in response) {
         this.keys.push(i);
       }
-
+      this.list = response.layouts;
+      this._appService.setDragList(this.list);
     });
 
 
   }
+
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.container.id === event.previousContainer.id) {
+      moveItemInArray(this.list, event.previousIndex, event.currentIndex);
+    } else {
+      return;
+    }
+  }
+
+
+  
 
 }

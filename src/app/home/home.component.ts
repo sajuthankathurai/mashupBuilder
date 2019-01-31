@@ -14,7 +14,21 @@ export class HomeComponent implements OnInit {
   constructor(private sidebarService:SidebarService) { }
 
   ngOnInit() {
+    this.list = ['Component 1','Component 2'];
+    this.sidebarService.setDropList(this.list);
 
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.container.id === event.previousContainer.id) {
+      moveItemInArray(this.list, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(this.sidebarService.getDragList(),
+        this.list,
+        event.previousIndex,
+        event.currentIndex);
+      this.sidebarService.setDropList(this.list);
+    }
   }
 
 }
