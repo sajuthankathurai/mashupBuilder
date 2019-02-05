@@ -1,6 +1,6 @@
-<!-- <h2 style="text-align:center;line-height:500px; ">
-  Drop here
-</h2> -->
-<div  cdkDropList id="list-2" cdkDropListConnectedTo="list-1" (cdkDropListDropped)="drop($event)">
-  <div *ngFor="let item of list" cdkDrag>{{ item }}</div>
+<!-- <div class="workspace" cdkDropList id="list-2" cdkDropListConnectedTo="list-1" (cdkDropListDropped)="drop($event)">
+  <div *ngFor="let item of list" cdkDrag>{{ item.name }}</div>
+</div> -->
+<div class="workspace" dragula="SIDEBAR" id="right" [(dragulaModel)]="list">
+  <div *ngFor="let item of list">{{ item.name }}</div>
 </div>

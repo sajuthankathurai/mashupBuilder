@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material-module';
+import { DragulaModule } from 'ng2-dragula';
 
 
 import { AppComponent } from './app.component';
@@ -29,7 +30,8 @@ import { CodeComponent } from './code/code.component';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    routing
+    routing,
+    DragulaModule.forRoot()
   ],
   providers: [DataWrapperService, SidebarService],
   bootstrap: [AppComponent]

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SidebarService } from '../side-bar/side-bar.service';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { DragulaService } from 'ng2-dragula';
 
 @Component({
   selector: 'app-home',
@@ -8,27 +7,30 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
   styleUrls: ['./home.component.css']
 
 })
+
 export class HomeComponent implements OnInit {
   list: any;
-  
-  constructor(private sidebarService:SidebarService) { }
+
+  constructor(private dragulaService: DragulaService) {
+    dragulaService.createGroup('SIDEBAR', {
+      copy: (el, source) => {
+        return source.id === 'left';
+      },
+      copyItem: (component) => {
+        return component;
+      },
+      accepts: (el, target, source, sibling) => {
+        // To avoid dragging from right to left container
+        return target.id !== 'left';
+      }
+    });
+  }
 
   ngOnInit() {
-    this.list = ['Component 1','Component 2'];
-    this.sidebarService.setDropList(this.list);
+    this.list = [];
 
   }
 
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.container.id === event.previousContainer.id) {
-      moveItemInArray(this.list, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(this.sidebarService.getDragList(),
-        this.list,
-        event.previousIndex,
-        event.currentIndex);
-      this.sidebarService.setDropList(this.list);
-    }
-  }
+
 
 }
