@@ -23,9 +23,13 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/grapesjs/dist/css/grapes.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/grapesjs/dist/grapes.min.js",
+              "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"
+            ]
           },
           "configurations": {
             "production": {

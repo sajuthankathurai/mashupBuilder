@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material-module';
 import { DragulaModule } from 'ng2-dragula';
+// import { OrigamiModule } from '@codebakery/origami';
 
 
 import { AppComponent } from './app.component';
@@ -23,7 +24,7 @@ import { CodeComponent } from './code/code.component';
     SideBarComponent,
     HomeComponent,
     EditComponent,
-    CodeComponent
+    CodeComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +34,7 @@ import { CodeComponent } from './code/code.component';
     routing,
     DragulaModule.forRoot()
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [DataWrapperService, SidebarService],
   bootstrap: [AppComponent]
 })
