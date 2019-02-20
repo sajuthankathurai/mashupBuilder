@@ -41,20 +41,20 @@ footer {
 }
 
 .workspace {
-  height: 100%;
+  height: 90.5%;
   width: 78%;
   position: fixed;
   top: 40px;
-  right: 0px;
-  border: 1px dashed blue;
+  left: 300px;
+  /* border: 1px dashed blue; */
 }
 
 .accordion {
   width: 300px;
-  height: -webkit-fill-available;
+  max-height: 600px;
   background: #fff;
   overflow-y: auto;
-  margin-top: 40px;
+  margin-top: -6px;
 }
 
 /** grid-layout **/
@@ -194,10 +194,12 @@ footer {
   filter: alpha(opacity=80);
   pointer-events: none;
 }
+
 /* high-performance display:none; helper */
 .gu-hide {
   left: -9999px !important;
 }
+
 /* added to mirrorContainer (default = body) while dragging */
 .gu-unselectable {
   -webkit-user-select: none !important;
@@ -205,9 +207,32 @@ footer {
   -ms-user-select: none !important;
   user-select: none !important;
 }
+
 /* added to the source element while its mirror is dragged */
 .gu-transit {
   opacity: 0.2;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20);
+}
+
+
+/* added by velumurugan */
+.gjs-editor-cont {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.gjs-cv-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  top: 0 !important;
+}
+
+/* .gjs-pn-buttons {
+  display: none !important;
+} */
+
+.gjs-pn-panel {
+  position: relative !important;
+  padding: 0px !important;
 }

@@ -28,6 +28,7 @@
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "grapesjs": "^0.14.52",
+    "grapesjs-blocks-basic": "^0.1.8",
     "grapesjs-plugin-export": "^1.0.7",
     "ng2-dragula": "^2.1.1",
     "rxjs": "^6.3.3",
