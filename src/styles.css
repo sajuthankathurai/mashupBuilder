@@ -46,7 +46,7 @@ footer {
   position: fixed;
   top: 40px;
   left: 300px;
-  /* border: 1px dashed blue; */
+  border: 1px dashed blue;
 }
 
 .accordion {

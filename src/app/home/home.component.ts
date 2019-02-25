@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DragulaService } from 'ng2-dragula';
 import 'hcl-ers-edge-responsive-table-master/src/core-grid-datatypes/core-grid-datatypes.js';
 
 declare var grapesjs: any; // Important!
@@ -14,27 +13,14 @@ import thePlugin2 from 'grapesjs-plugin-export';
 })
 
 export class HomeComponent implements OnInit {
-  list: any;
   public apirequest: any;
   public tableconfig: any;
 
-  constructor(private dragulaService: DragulaService) {
-    dragulaService.createGroup('SIDEBAR', {
-      copy: (el, source) => {
-        return source.id === 'left';
-      },
-      copyItem: (component) => {
-        return component;
-      },
-      accepts: (el, target, source, sibling) => {
-        // To avoid dragging from right to left container
-        return target.id !== 'left';
-      }
-    });
+  constructor() {
+   
   }
 
   ngOnInit() {
-    this.list = [];
 
     const editor = grapesjs.init({
       // Indicate where to init the editor. You can also pass an HTMLElement
@@ -69,32 +55,32 @@ export class HomeComponent implements OnInit {
           labelMap: 'Map',
 
         },
-        'grapesjs-plugin-export': {
+        thePlugin2: {
           addExportBtn: true,
           btnLabel: 'Export to ZIP',
           filenamePfx: 'grapesjs_template',
           root: {
             css: {
               'style.css': ed => ed.getCss(),
+              'main.txt': 'content here',
             },
-
-
+           
             'index.html': ed =>
               `<!doctype html>
-        <html lang="en">
-          <head>
-            <meta charset="utf-8">
-            <link rel="stylesheet" href="./css/style.css">
-            ${this.includescripts(ed)}
-          </head>
-          <body>${ed.getHtml()}</body>
-        <html>`,
+            <html lang="en">
+              <head>
+                <meta charset="utf-8">
+                <link rel="stylesheet" href="./css/style.css">
+               
+              </head>
+              <body>${ed.getHtml()}</body>
+            <html>`
           }
         }
       },
       blockManager: {
         appendTo: '#blocks',
-       
+
       }
     });
 
@@ -136,31 +122,33 @@ export class HomeComponent implements OnInit {
       ]
     });
 
+    function includescripts(ed) {
+      console.log("reached");
+      var temContent = ed.getHtml();
+      var scriptToInclude = "";
+      if (temContent.indexOf('gridTable') > -1) {
+        console.log("reached2");
+        scriptToInclude = scriptToInclude + '<script src="https://hclo365-my.sharepoint.com/personal/velmurugan_su_hcl_com/Documents/main.js?e=4%3a680718ec2de5496ca6ac9df8bccf13ae&at=9"/>\n';
+      }
+      if (temContent.indexOf('testComp') > -1) {
+        scriptToInclude = scriptToInclude + '<script src="test component"/>\n';
+      }
+      if (temContent.indexOf('inputComp') > -1) {
+        scriptToInclude = scriptToInclude + '<script src="input component"/>\n';
+      }
+      if (temContent.indexOf('textComp') > -1) {
+        scriptToInclude = scriptToInclude + '<script src="text component"/>\n';
+      }
+      if (temContent.indexOf('secComp') > -1) {
+        scriptToInclude = scriptToInclude + '<script src="section component"/>\n';
+      }
+
+      return scriptToInclude;
+    }
+
 
   }
 
-  includescripts(ed) {
-    console.log("reached");
-    var temContent = ed.getHtml();
-    var scriptToInclude = "";
-    if (temContent.indexOf('gridTable') > -1) {
-      console.log("reached2");
-      scriptToInclude = scriptToInclude + '<script src="https://hclo365-my.sharepoint.com/personal/velmurugan_su_hcl_com/Documents/main.js?e=4%3a680718ec2de5496ca6ac9df8bccf13ae&at=9"/>\n';
-    }
-    if (temContent.indexOf('testComp') > -1) {
-      scriptToInclude = scriptToInclude + '<script src="test component"/>\n';
-    }
-    if (temContent.indexOf('inputComp') > -1) {
-      scriptToInclude = scriptToInclude + '<script src="input component"/>\n';
-    }
-    if (temContent.indexOf('textComp') > -1) {
-      scriptToInclude = scriptToInclude + '<script src="text component"/>\n';
-    }
-    if (temContent.indexOf('secComp') > -1) {
-      scriptToInclude = scriptToInclude + '<script src="section component"/>\n';
-    }
 
-    return scriptToInclude;
-  }
 
 }
