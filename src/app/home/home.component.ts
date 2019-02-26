@@ -126,7 +126,7 @@ export class HomeComponent implements OnInit {
     var temContent = ed.getHtml();
     var scriptToInclude = "";
     if (temContent.indexOf('gridTable') > -1) {
-      scriptToInclude = scriptToInclude + '<script src="https://hclo365-my.sharepoint.com/personal/velmurugan_su_hcl_com/Documents/main.js?e=4%3a680718ec2de5496ca6ac9df8bccf13ae&at=9"/>\n';
+      scriptToInclude = scriptToInclude + '<script src="https://hclo365-my.sharepoint.com/personal/velmurugan_su_hcl_com/Documents/main.js?e=4%3a680718ec2de5496ca6ac9df8bccf13ae&at=9"/>\n' + '<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.7/custom-elements-es5-adapter.js"/>\n';
     }
     if (temContent.indexOf('testComp') > -1) {
       scriptToInclude = scriptToInclude + '<script src="test component"/>\n';
