@@ -3,8 +3,8 @@ import { DragulaService } from 'ng2-dragula';
 import 'hcl-ers-edge-responsive-table-master/src/core-grid-datatypes/core-grid-datatypes.js';
 
 declare var grapesjs: any; // Important!
-import thePlugin from 'grapesjs-blocks-basic';
-import thePlugin2 from 'grapesjs-plugin-export';
+import basicBlocksPlugin from 'grapesjs-blocks-basic';
+import exportPlugin from 'grapesjs-plugin-export';
 
 @Component({
   selector: 'app-home',
@@ -50,9 +50,9 @@ export class HomeComponent implements OnInit {
         defaults: []
       },
 
-      plugins: [thePlugin, thePlugin2],
+      plugins: [basicBlocksPlugin, exportPlugin],
       pluginsOpts: {
-        thePlugin: {
+        [basicBlocksPlugin]: {
           blocks: ['column1', 'column2', 'column3', 'column3-7', 'text', 'link', 'image', 'video', 'map'],
           flexGrid: 0,
           stylePrefix: 'gjs-',
@@ -66,30 +66,28 @@ export class HomeComponent implements OnInit {
           labelLink: 'Link',
           labelImage: 'Image',
           labelVideo: 'Video',
-          labelMap: 'Map',
+          labelMap: 'Map'
 
         },
-        'grapesjs-plugin-export': {
+       [exportPlugin]: {
           addExportBtn: true,
           btnLabel: 'Export to ZIP',
-          filenamePfx: 'grapesjs_template',
+          filenamePfx: 'grapesjs_templateCode',
           root: {
             css: {
               'style.css': ed => ed.getCss(),
             },
-
-
             'index.html': ed =>
               `<!doctype html>
         <html lang="en">
           <head>
             <meta charset="utf-8">
             <link rel="stylesheet" href="./css/style.css">
-            ${this.includescripts(ed)}
+            ${this.includeScripts(ed)}
           </head>
           <body>${ed.getHtml()}</body>
         <html>`,
-          }
+          } 
         }
       },
       blockManager: {
@@ -139,12 +137,10 @@ export class HomeComponent implements OnInit {
 
   }
 
-  includescripts(ed) {
-    console.log("reached");
+  includeScripts(ed) {
     var temContent = ed.getHtml();
     var scriptToInclude = "";
     if (temContent.indexOf('gridTable') > -1) {
-      console.log("reached2");
       scriptToInclude = scriptToInclude + '<script src="https://hclo365-my.sharepoint.com/personal/velmurugan_su_hcl_com/Documents/main.js?e=4%3a680718ec2de5496ca6ac9df8bccf13ae&at=9"/>\n';
     }
     if (temContent.indexOf('testComp') > -1) {
