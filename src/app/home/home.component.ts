@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DragulaService } from 'ng2-dragula';
 import 'hcl-ers-edge-responsive-table-master/src/core-grid-datatypes/core-grid-datatypes.js';
 
 declare var grapesjs: any; // Important!
@@ -14,27 +13,14 @@ import exportPlugin from 'grapesjs-plugin-export';
 })
 
 export class HomeComponent implements OnInit {
-  list: any;
   public apirequest: any;
   public tableconfig: any;
 
-  constructor(private dragulaService: DragulaService) {
-    dragulaService.createGroup('SIDEBAR', {
-      copy: (el, source) => {
-        return source.id === 'left';
-      },
-      copyItem: (component) => {
-        return component;
-      },
-      accepts: (el, target, source, sibling) => {
-        // To avoid dragging from right to left container
-        return target.id !== 'left';
-      }
-    });
+  constructor() {
+   
   }
 
   ngOnInit() {
-    this.list = [];
 
     const editor = grapesjs.init({
       // Indicate where to init the editor. You can also pass an HTMLElement
@@ -87,12 +73,12 @@ export class HomeComponent implements OnInit {
           </head>
           <body>${ed.getHtml()}</body>
         <html>`,
-          } 
+          }    
         }
       },
       blockManager: {
         appendTo: '#blocks',
-       
+
       }
     });
 
@@ -133,11 +119,10 @@ export class HomeComponent implements OnInit {
 
       ]
     });
-
-
   }
 
-  includeScripts(ed) {
+    
+    includeScripts(ed) {
     var temContent = ed.getHtml();
     var scriptToInclude = "";
     if (temContent.indexOf('gridTable') > -1) {
@@ -155,8 +140,13 @@ export class HomeComponent implements OnInit {
     if (temContent.indexOf('secComp') > -1) {
       scriptToInclude = scriptToInclude + '<script src="section component"/>\n';
     }
+      return scriptToInclude;
 
-    return scriptToInclude;
-  }
+    }
+
+
+  
+
+
 
 }
