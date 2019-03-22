@@ -236,3 +236,25 @@ footer {
   position: relative !important;
   padding: 0px !important;
 }
+
+#codebtn img{
+  height: 36px;
+  margin-top: 2px;
+}
+.gjs-pn-buttons {
+  height: 18px;
+  position: absolute;
+  top: 29px;
+}
+.gjs-pn-btn {
+  box-sizing: border-box;
+   min-height: 0px !important; 
+  min-width: 39px;
+  border-radius: 2px !important;
+  padding: 9px;
+  position: relative;
+  cursor: pointer;
+  left: 10px;
+top: -20px;
+}
+
