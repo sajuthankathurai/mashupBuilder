@@ -258,3 +258,12 @@ footer {
 top: -20px;
 }
 
+i.awsimgsize{
+  font-size:48px;
+  color:white
+}
+
+.awslblsize{
+  font-size:12px;
+  color:white
+}
