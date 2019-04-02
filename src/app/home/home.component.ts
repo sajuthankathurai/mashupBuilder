@@ -6,7 +6,7 @@ declare global {
   
 import Highcharts from 'highcharts/highstock';
 window.Highcharts = Highcharts; //this line did the magic
-import 'test/src/core-chart-datatypes/core-chart-datatypes.js'
+import 'core-chart-datatypes/src/core-chart-datatypes/core-chart-datatypes.js'
 
 declare var grapesjs: any; // Important!
 import basicBlocksPlugin from 'grapesjs-blocks-basic';
